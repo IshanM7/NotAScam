@@ -257,6 +257,31 @@
   }
   .btn-no.hidden { opacity: 0; pointer-events: none; }
 
+  /* ─── Back Button ─── */
+  .btn-back {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 101;
+    padding: 12px 32px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--text-mid);
+    background: rgba(255,255,255,0.7);
+    border: 1px solid rgba(206,147,216,0.4);
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    transition: box-shadow .2s, opacity .3s;
+    outline: none;
+    white-space: nowrap;
+    user-select: none;
+  }
+  .btn-back:hover {
+    box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+  }
+
   /* ─── Celebration Overlay ─── */
   .celebration {
     display: none;
@@ -396,6 +421,7 @@
     </div>
   </div>
   <h2>YAYYYYYYYY I LOVE YOU!!!💕</h2>
+  <button class="btn-back" id="btnBack">Back</button>
   <div class="photos-row">
     <div class="photo-wrap" id="photoWrap6">
       <img id="photoImg6" src="" alt="Photo" />
@@ -560,6 +586,16 @@
 
     document.getElementById('celebration').classList.add('active');
     startCelebration();
+    btnBack.style.display = 'block';
+  });
+
+  // ─── Back Button – Return to First Screen ───
+  const btnBack = document.getElementById('btnBack');
+  btnBack.style.display = 'none';
+  btnBack.addEventListener('click', function(){
+    document.getElementById('celebration').classList.remove('active');
+    btnNo.classList.remove('hidden');
+    btnBack.style.display = 'none';
   });
 
   // ─── Fireworks & Hearts Canvas ───
